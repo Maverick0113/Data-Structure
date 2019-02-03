@@ -40,3 +40,46 @@ arr.pop()
 print("Pop ->")
 print("Current Array: ", end = "")
 print(arr)
+
+# clear()
+# remove all items from the list
+arr.clear()
+print("Clear ->")
+print("Current Array: ", end = "")
+print(arr)
+
+arr = [52, 90, 18, 68, 41, 82, 34, 61, 52, 62, 14, 10, 22]
+print("Current Array: ", end = "")
+print(arr)
+
+# index(x, [start], [end])
+# return zero-based index in the list of the first item
+# whose vlue is equal to [x]
+print("41 is located at: ", end = "")
+print(arr.index(41))
+
+# count(x)
+# return the number of times [x] appears in the list
+print("There are ", end = "")
+print(arr.count(52), end = "")
+print(" 52's in arr")
+
+# sort(key = None, reverse = False)
+# sort the items of the list in place
+arr.sort()
+print("Current Array: ", end = "")
+print(arr)
+
+# reverse()
+# reverse the elements of the list in place
+arr.reverse()
+print("Current Array: ", end = "")
+print(arr)
+
+# copy()
+# return a shallow copy fo the list
+copy = arr.copy()
+print("Current Array: ", end = "")
+print(arr)
+print("Current Copy: ", end = "")
+print(copy)
