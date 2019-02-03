@@ -56,4 +56,23 @@ print(s.intersection(in1, in2))
 
 # difference(*other)
 # set - other - ...
-# return a new set with elements in the set
+# return a new set with elements in the set that are not in the [others]
+dif1 = {24, 21, 9}
+dif2 = {19, 69, 94, 16}
+print("The difference of s, dif1, and dif2 is: ", end = "")
+print(s.difference(dif1, dif2))
+# print(s - dif1 - dif2)
+
+# symmetric_difference(other)
+# set ^ other
+# return a new set with elements in either the set or [other] but not both
+sym = {95, 24, 21, 13}
+print("The symmetric_difference of s and sym is: ", end = "")
+print(s.symmetric_difference(sym))
+# print(s ^ sym)
+
+# copy()
+# return a new set with a shallow copy of s
+copy = s.copy()
+print("Copy Set: ", end = "")
+print(copy)
