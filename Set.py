@@ -76,3 +76,76 @@ print(s.symmetric_difference(sym))
 copy = s.copy()
 print("Copy Set: ", end = "")
 print(copy)
+
+# update(*others)
+# set |= other | ...
+# update the set, adding elements form all [others]
+up1 = {49, 29, 71}
+up2 = {26, 37, 21}
+s.update(up1, up2)
+# s |= up1 | up2
+print("The updated set is: ", end = "")
+print(s)
+
+# intersection_update(*others)
+# set &= other & ...
+# update the set, keeping only elements found in it and all [others]
+inup1 = {21, 9, 19, 69, 94}
+s.intersection_update(inup1)
+# s &= inup1
+print("The intersection updated set is: ", end = "")
+print(s)
+
+# difference_update(*others)
+# set -= other | ...
+# update the set, removing elements found in [others]
+difup1 = {69, 94}
+s.difference_update(difup1)
+# s -= difup1
+print("The difference updated set is: ", end = "")
+print(s)
+
+# symmetric_difference_update(other)
+# set ^= other
+# update the set, keeping only elements found in either set, but not in both
+symup1 = {19, 21}
+s.symmetric_difference_update(symup1)
+# s ^= symup1
+print("The symmetric difference updated set is: ", end = "")
+print(s)
+
+# add(elem)
+# add element [elem] to the set
+s.add(13)
+print("Current Set: ", end = "")
+print(s)
+
+# remove(elem)
+# remove element [elem] from the set
+s.remove(9)
+print("Current Set: ", end = "")
+print(s)
+
+s = {79, 37, 62, 11, 17}
+print("Current Set: ", end = "")
+print(s)
+
+# discard(elem)
+# remove element [elem] from the set if it is present
+s.discard(62)
+print("Current Set: ", end = "")
+print(s)
+
+# pop()
+# remove and return an arbitrary element from the set
+p = s.pop()
+print("The popped element in s is: ", end = "")
+print(p)
+print("Current Set: ", end = "")
+print(s)
+
+# clear()
+# remove all elements from the set
+s.clear()
+print("Current Set: ", end = "")
+print(s)
