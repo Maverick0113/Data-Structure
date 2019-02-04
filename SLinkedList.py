@@ -67,8 +67,51 @@ class SLinkedList:
 
         new.next = cur.next.next
         cur.next = new
+    
+    # remove the first item from the list whose value is equal to [x]
+    def remove(self, x):
+        # if the removed item is at first position
+        if self.head.val == x:
+            self.head = self.head.next
+            return
+
+        cur = self.head
+        prev = None
+        found = False
+        while cur:
+            if cur.val == x:
+                found = True
+                break
+            prev = cur
+            cur = cur.next
+
+        # if item does not exist in Linked List
+        if not found:
+            print("Item not found")
+            return
+
+        # if the removed item is at last position
+        if not cur.next:
+            prev.next = None
+            return
+
+        prev.next = cur.next
+    
+    # print current linked list as a list
+    def print(self):
+        if not self.head:
+            print("Empty Linked List")
+            return
+
+        cur = self.head
+        arr = []
+        while cur:
+            arr.append(cur.val)
+            cur = cur.next
+        print(arr)
+        
 
 l = SLinkedList()
-l.extend([3, 4])
-l.insert(4, 5)
-print(l.head.next.next.val)
+l.extend([3, 4, 5])
+l.remove(5)
+l.print()
