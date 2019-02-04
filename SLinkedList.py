@@ -97,6 +97,37 @@ class SLinkedList:
 
         prev.next = cur.next
     
+    # remove the item at the given position in the list, and return it
+    def pop(self, i):
+
+        # if the position [i] is negative
+        if i < 0:
+            print("Out of bound index")
+            return
+
+        # if the popped item is at first position
+        if i == 0:
+            self.head= self.head.next
+            return self.head.val
+
+        cur = self.head
+        prev = None
+        index = int(0)
+        # Continue traversing as long as index is less than
+        # position [i] and current node's [next] exist
+        while index < i and cur.next:
+            prev = cur
+            cur = cur.next
+            index += 1
+
+        # if the removed item is at last position
+        if not cur.next:
+            prev.next = None
+            return cur.val
+
+        prev.next = cur.next
+        return cur.val
+
     # print current linked list as a list
     def print(self):
         if not self.head:
@@ -113,5 +144,6 @@ class SLinkedList:
 
 l = SLinkedList()
 l.extend([3, 4, 5])
-l.remove(5)
+print(l.pop(3))
+print(l.pop(2))
 l.print()
