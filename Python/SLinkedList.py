@@ -55,6 +55,7 @@ class SLinkedList:
         # if inserting at the first position
         if i == 0:
             new.next = self.head
+            self.head = new
             return
 
         index = int(0)
@@ -65,7 +66,7 @@ class SLinkedList:
             cur = cur.next
             index += 1
         
-        # if the inserting at the last position
+        # if inserting at the last position
         if not cur.next:
             cur.next = new
             return
@@ -116,8 +117,9 @@ class SLinkedList:
 
         # if the popped item is at first position
         if i == 0:
-            self.head= self.head.next
-            return self.head.val
+            data = self.head.val
+            self.head = self.head.next
+            return data
 
         cur = self.head
         prev = None
@@ -265,7 +267,7 @@ print(lis.index(21))
 
 print("There are ", end = "")
 print(lis.count(14), end = "")
-print(" 14's in arr")
+print(" 14's in lis")
 
 lis.sort(True)
 print("Current Linked List is: ", end = "")
