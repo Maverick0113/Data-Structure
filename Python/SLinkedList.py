@@ -64,13 +64,13 @@ class SLinkedList:
         while index < i - 1 and cur.next:
             cur = cur.next
             index += 1
-
+        
         # if the inserting at the last position
         if not cur.next:
             cur.next = new
             return
 
-        new.next = cur.next.next
+        new.next = cur.next
         cur.next = new
 
     # remove(x)   
@@ -216,14 +216,67 @@ class SLinkedList:
             return
 
         cur = self.head
-        arr = []
         while cur:
-            arr.append(cur.val)
+            print(cur.val, end = " -> ")
             cur = cur.next
-        print(arr)
+        print()
         
 
-l = SLinkedList()
-l.extend([2, 3, 1])
-l.sort(True)
-l.print()
+lis = SLinkedList()
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.append(30)
+print("Append -> 30")
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.extend([62, 23, 15, 73, 77, 8, 38, 44])
+print("Extend -> [62, 23, 15, 73, 77, 8, 38, 44]")
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.insert(3, 13)
+print("Insert -> 13 at 3")
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.remove(8)
+print("Remove -> 8")
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.pop(7)
+print("Pop -> 7")
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.clear()
+print("Clear ->")
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.extend([81, 78, 33, 21, 99, 14, 59])
+print("Current Linked List is: ", end = "")
+lis.print()
+
+print("21 is located at: ", end = "")
+print(lis.index(21))
+
+print("There are ", end = "")
+print(lis.count(14), end = "")
+print(" 14's in arr")
+
+lis.sort(True)
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.reverse()
+print("Current Linked List is: ", end = "")
+lis.print()
+
+copy = lis.copy()
+print("Current Linked List is: ", end = "")
+lis.print()
+print("Copy Linked List is: ", end = "")
+copy.print()
