@@ -85,6 +85,112 @@ class DLinkedList:
             cur = cur.left
         self.head = cur
 
+    # insert(i, x)
+    # Insert an item[x] at a given position
+    def insert(self, i, x):
+        new = Node(x)
+        # if the position[i] is negative
+        if i < 0:
+            print("Out of bound index")
+            return
+
+        # if inserting at the first position
+        if i == 0:
+            new.right = self.head
+            self.head.left = new
+            self.head = new
+            return
+
+        index = int(0)
+        cur = self.head
+        # Continue traversing as long as index is less than
+        # position [i - 1] and current node's [right] exist
+        while index < i - 1 and cur.right:
+            cur = cur.right
+            index += 1
+
+        # if inserting at the last position
+        if not cur.right:
+            new.left = self.tail
+            self.tail.right = new
+            self.tail = new
+            return
+
+        new.right = cur.right
+        cur.right.left = new
+        cur.right = new
+        new.left = cur
+
+    # remove(x)   
+    # remove the first item from the list whose value is equal to [x]
+    def remove(self, x):
+        # if removed item is at first position
+        if self.head.val == x:
+            self.head = self.head.right
+            self.head.left = None
+            return
+
+        # if removed item is at last position
+        if self.tail.val == x:
+            self.tail = self.tail.left
+            self.tail.right = None
+            return
+
+        cur_head = self.head
+        cur_tail = self.tail
+        while cur_head and cur_tail:
+            if cur_head.val == x:
+                print("H")
+                cur_head.left.right = cur_head.right
+                cur_head.right.left = cur_head.left
+                return
+            if cur_tail.val == x:
+                print("T")
+                cur_tail.left.right = cur_tail.right
+                cur_tail.right.left = cur_tail.left
+                return
+            cur_head = cur_head.right
+            cur_tail = cur_tail.left
+        
+        print("Item not found")
+
+    # pop([i])
+    # remove the item at the given position in the list, and return it
+    # if no index is specified, remove and
+    # return the last item in the list
+    def pop(self, i):
+        # if the position[i] is negative
+        if i < 0:
+            print("Out of bound index")
+            return
+
+        # if the popped item is at first position
+        if i == 0:
+            data = self.head.val
+            self.head = self.head.right
+            self.head.left = None
+            return data
+
+        cur = self.head
+        index = int(0)
+        # Continue traversing as long as index is less than
+        # position [i] and current node's [right] exist
+        while index < i and cur.right:
+            cur = cur.right
+            index += 1
+
+        # if the removed item is at last position
+        if not cur.right:
+            data = self.tail.val
+            self.tail =  self.tail.left
+            self.tail.right = None
+            return data
+
+        data = cur.val
+        cur.left.right = cur.right
+        cur.right.left = cur.left
+        return data
+
     # print current linked list as a list
     def print(self):
         if not self.head or not self.tail:
@@ -126,5 +232,20 @@ lis.print()
 
 lis.extendLeft([90, 94, 78])
 print("Extend Left -> [90, 94, 78]")
+print("Current Linked List is: ")
+lis.print()
+
+lis.insert(3, 13)
+print("Insert -> 13 at 3")
+print("Current Linked List is: ")
+lis.print()
+
+lis.remove(8)
+print("Remove -> 8")
+print("Current Linked List is: ")
+lis.print()
+
+lis.pop(15)
+print("Pop -> 7")
 print("Current Linked List is: ")
 lis.print()
