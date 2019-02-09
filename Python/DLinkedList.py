@@ -140,12 +140,10 @@ class DLinkedList:
         cur_tail = self.tail
         while cur_head and cur_tail:
             if cur_head.val == x:
-                print("H")
                 cur_head.left.right = cur_head.right
                 cur_head.right.left = cur_head.left
                 return
             if cur_tail.val == x:
-                print("T")
                 cur_tail.left.right = cur_tail.right
                 cur_tail.right.left = cur_tail.left
                 return
@@ -190,6 +188,78 @@ class DLinkedList:
         cur.left.right = cur.right
         cur.right.left = cur.left
         return data
+
+    # clear()
+    # remove all items from the list
+    def clear(self):
+        self.head = None
+        self.tail = None
+
+    # index(x)
+    # return zero-based index in the list of the first item
+    # whose value is equal to [x]
+    def index(self, x):
+        cur = self.head
+        index = int(0)
+        while cur:
+            if cur.val == x:
+                return index
+            index += 1
+            cur = cur.right
+        return -1
+
+    # count(x)
+    # return the number of times [x] appears in the list
+    def count(self, x):
+        cnt = int(0)
+        cur = self.head
+        while cur:
+            if cur.val == x:
+                cnt += 1
+            cur = cur.right
+        return cnt
+
+    # sort(reverse = False)
+    # sort the items of the list in place
+    def sort(self, flag):
+        arr = []
+        cur = self.head
+        while cur:
+            arr.append(cur.val)
+            cur = cur.right
+
+        arr.sort(reverse = not flag)
+
+        self.head = Node(arr[0])
+        cur = self.head
+        for i in range(1, len(arr)):
+            new = Node(arr[i])
+            cur.right = new
+            new.left = cur
+            cur = cur.right
+        self.tail = cur
+
+    # reverse()
+    # reverse the elements of the list in place
+    def reverse(self):
+        cur = self.head
+        while cur:
+            cur.left, cur.right = cur.right, cur.left
+            cur = cur.left
+        self.head, self.tail = self.tail, self.head
+
+    # copy()
+    # return a shallow copy of the list
+    def copy(self):
+        if not self.head and not self.tail:
+            print("Empty Linked List")
+            return
+        new = DLinkedList()
+        cur = self.head
+        while cur:
+            new.appendRight(cur.val)
+            cur = cur.right
+        return new
 
     # print current linked list as a list
     def print(self):
@@ -245,7 +315,37 @@ print("Remove -> 8")
 print("Current Linked List is: ")
 lis.print()
 
-lis.pop(15)
+lis.pop(7)
 print("Pop -> 7")
 print("Current Linked List is: ")
 lis.print()
+
+lis.clear()
+print("Clear ->")
+print("Current Linked List is: ", end = "")
+lis.print()
+
+lis.extendRight([81, 78, 33, 21, 99, 14, 59])
+print("Current Linked List is: ")
+lis.print()
+
+print("21 is located at: ", end = "")
+print(lis.index(21))
+
+print("There are ", end = "")
+print(lis.count(14), end = "")
+print(" 14's in lis")
+
+lis.sort(True)
+print("Current Linked List is: ")
+lis.print()
+
+lis.reverse()
+print("Current Linked List is: ")
+lis.print()
+
+copy = lis.copy()
+print("Current Linked List is: ")
+lis.print()
+print("Copy Linked List is: ")
+copy.print()
