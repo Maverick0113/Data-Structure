@@ -15,13 +15,13 @@ class Queue:
         return self.size == 0
 
     # push(x)
-    # Push [x] into queue
+    # push [x] into queue
     def push(self, x):
         self.queue.append(x)
         self.size += 1
 
     # pop()
-    # Remove and return top item from queue
+    # remove and return top item from queue
     def pop(self):
         data = self.queue[0]
         self.queue = self.queue[1:]
