@@ -25,6 +25,7 @@ class Queue:
     def pop(self):
         data = self.queue[0]
         self.queue = self.queue[1:]
+        self.size -= 1
         return data
 
     # print current queue as a list
