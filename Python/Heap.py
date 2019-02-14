@@ -41,7 +41,9 @@ class Heap:
             return
         # if heap has only one item
         if len(self.heap) == 1:
-            return self.heap[0]
+            data = self.heap[0]
+            self.heap = []
+            return data
         
         self.heap[0], self.heap[-1] = self.heap[-1], self.heap[0]
         data = self.heap[-1]
