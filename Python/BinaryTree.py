@@ -62,7 +62,7 @@ class BinaryTree:
                 return 1 + max(depth(cur.left), depth(cur.right))
         return depth(self.root)
     
-    # print()
+    # traversal()
     # print the inorder, preorder, and postorder traversal of the binary tree
     def traversal(self):
         def inorder(root):
